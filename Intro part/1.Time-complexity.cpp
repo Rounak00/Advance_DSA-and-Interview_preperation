@@ -1,3 +1,33 @@
+//Time complexity: It is a particular time that taken by a algorithm to run.
+//Space Complexity: It is a amount of memory place taken by an algotithm to run.
+/* Time complexity table Ascending order: - 
+                 1.   1
+                 2.  log n
+                 3.  √n
+                 4.   n
+                 5.  n log n
+                 6.   n²
+                 7.   n³
+                 8.   2n
+                 9.   n!
+*/
+
+/* Masters theorem :- [it is only use to some specific reccurence relationship program's times findout ] 
+                    [ mostly use in Divide and conqurer ]
+this theorem we can solve these type questions>>T(n)=aT(n/b) + f(n) [where must a>=1,b>1,f(n)=O(n^k log^p n)] 
+
+case 1: if log a base b > k then o(n^ log a base b)
+
+case 2: log a base b = k 
+         a> if p>-1 : o(n^k log^p+1 n)
+         b> p=-1 : o(n^k loglog n)
+         c> p<-1 : o(n^k)
+
+case 3 : if log a base b <k
+         a> p>=0: o(n^k log^p n)
+         b> p<0: o(n^k)         
+*/
+
 //We always calculate time complecity in worst case 
 
 10^7 => 10000000 -> 1sec
