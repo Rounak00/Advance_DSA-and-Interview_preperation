@@ -30,6 +30,7 @@ case 3 : if log a base b <k
 
 //We always calculate time complecity in worst case 
 
+// per oteration in online platforms
 10^7 => 10000000 -> 1sec
 10^8 => 100000000 -> 10sec
 10^9 => 1000000000 -> 100sec
@@ -53,14 +54,14 @@ main(){
 
 // when we divide in two part like binary search, binary tree n that case this is O(log n)
 
+int main(){
+    int n;
+    for(int i=0;i<=n;i++){
+        for(int j=0;j<i;j++){
+            ...
+        }
+    }
+}
+// in that case it is O(n^2)
 
-// Now devide all timecomplexity in least to higherL:->
- 1.  O(1)
- 2. O(log n)
- 3. O(n)
- 4. O(nlog n)
- 5. O(n^2)
- 6. O(n^3)
- 7. O(2^n) 
- 8. O(n!) 
- 
+
