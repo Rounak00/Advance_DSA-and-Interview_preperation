@@ -1,0 +1,26 @@
+Bit Manipulation or Bit Magic:-
+
+Positions in Binary number start from 0;
+If any position is 1 , then its call set bit.
+If any position is 0, then its call unset bit.
+
+LSB(Least significant Bit):  0 position
+MSB(Most significant Bit): Highest position
+
+Now operators &, |, ^, <<, >>, ~
+
+in signed integers last bit or leftmost beat is for sign if 0 then + if 1 then -;
+Negetive numbers mostly store in 2's compliment
+
+Brian kerningthan algorithm:-
+      N&(N-1) => use for ubset most right setbit
+
+Find right most bit:-
+      N & ~(N-1) 
+
+Unset a bit:- a & ~(1<<nth)
+
+
+In Xor all 4 multiples in ans of a series
+
+NB: In question make sure there are Nth bit and position  are different
