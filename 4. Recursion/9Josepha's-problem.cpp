@@ -6,7 +6,7 @@ int jos(int n, int k){
     if(n==1){
         return 0;
     }
-    return((jos(n,k)+k)%n); // +k bcz numbers are k times shifted
+    return((jos(n-1,k)+k)%n); // +k bcz numbers are k times shifted
 }
 int main() {
 	cout<<jos(5, 3); 
@@ -37,3 +37,11 @@ int main() {
 	
 	return 0;
 }*/
+
+/*
+Another ans
+func(n,k){
+	if(n==1){return 1;}
+	return(func(n-1,k)+k-1)%n+1
+}
+*/
