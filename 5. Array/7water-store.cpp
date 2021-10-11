@@ -10,7 +10,7 @@ int getWater(int arr[], int n)
 		for(int j = 0; j < i; j++)
 			lMax = max(lMax, arr[j]);
 
-		int rMax = arr[i];
+		    int rMax = arr[i];
 
 		for(int j = i + 1; j < n; j++)
 			rMax = max(rMax, arr[j]);
