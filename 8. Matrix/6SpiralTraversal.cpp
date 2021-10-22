@@ -30,6 +30,7 @@ void printSpiral(int mat[4][4], int R, int C){
             
         }
 }
+// here we can add directions as well
 
 int main()
 {	
