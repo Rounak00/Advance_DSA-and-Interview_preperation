@@ -9,10 +9,10 @@ int largestSubarrayWithSumX(int arr[], int n, int sum)
    
     for(int i = 0; i < n; i++)
     {
-        prefix_sum += arr[i];
-        if(prefix_sum==sum){res=i+1;}
+        psum += arr[i];
+        if(psum==sum){res=i+1;}
         if(m.find(psum)==m.end()){
-            m.insert({presum, i});
+            m.insert({psum, i});
         }
         if(m.find(psum-sum)!=m.end()){
             res=max(res, i-m[psum-sum]);
@@ -30,3 +30,17 @@ int main()
     cout << largestSubarrayWithSumX(arr, n, sum);
     
 }
+/*
+//naive:
+int res=0;
+for(int i=0;i<n;i++){
+    int sr=0;
+    for(int j=i;j<n;j++){
+          sr+=a[j];
+          if(sr==sum){
+              res=(res,j-i+1);
+          }
+    }
+}
+
+*/
