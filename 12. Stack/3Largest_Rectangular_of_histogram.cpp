@@ -123,3 +123,9 @@ int main()
     return 0; 
 }
 
+
+//Aditiya verma:
+
+//NSL and NSR index vector and then  also e assume in both side there is a 0 height bulding in -1 and end() index
+//NSL - NSR -1 =width[]; //dont forget the reverse portion in nsr
+//array[] * width[] and here find max
