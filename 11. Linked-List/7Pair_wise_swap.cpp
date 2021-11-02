@@ -28,3 +28,25 @@ Node *pairwiseSwap(Node *head){
     prev->next=curr;
     return head;
 }
+
+
+/*/Striver solution:
+ // Third round: restore the original list, and extract the copy list.
+          iter = head;
+          Node *pseudoHead = new Node(0);
+          Node *copy = pseudoHead;
+
+          while (iter != NULL) {
+            front = iter->next->next;
+
+            // extract the copy
+            copy->next = iter->next;
+
+            // restore the original list
+            iter->next = front;
+              
+            copy = copy -> next; 
+            iter = front;
+          }
+
+          return pseudoHead->next;*/
