@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <limits.h>
 using namespace std;
 
@@ -24,7 +24,7 @@ int main() {
     	printPrimeFactors(n);	
     	return 0;
 }
-/*
+*/
 //efficient:-
 #include <iostream>
 #include <limits.h>
@@ -71,4 +71,3 @@ int main() {
     	printPrimeFactors(n);
     	return 0;
 }
-*/
