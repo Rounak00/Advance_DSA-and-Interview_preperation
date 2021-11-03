@@ -1,10 +1,10 @@
 #include<iostream>
 using namespace std;
 
-void lsb(int n){
+void lsb(int n){//left set bit
     cout<< (n&(n-1)) <<endl;
 }
-void msb(int n){
+void msb(int n){//Right set bit
     cout<< (n&~(n-1))<<endl;
 }
 

@@ -27,7 +27,7 @@ int power2(int x, int n){
 }
 int main() {
     
-    int x = 3, n = 5;
+    int x = 3, n = 5;  //x is number here
 
 	cout<<power1(x, n)<<endl;
     cout<<power2(x, n);
