@@ -8,10 +8,10 @@ using namespace std;
 void func4(int id,vector<int>&v, int arr[], int n){
    if(id==n){
        for(auto it:v){
-	   cout<<it;
+	      cout<<it;
 	   }
-       cout<<endl;
-       return ;
+        cout<<endl;
+        return ;
    }
   v.push_back(arr[id]);
   func4(id+1,v,arr,n);
