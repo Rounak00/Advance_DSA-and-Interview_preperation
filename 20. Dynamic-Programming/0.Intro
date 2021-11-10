@@ -1,0 +1,32 @@
+//Parent Questions :-
+
+    1. 0-1 Knapsack (6)
+    2. Unbounded Knapsack(5)
+    3. Fibonacci(7)
+    4. LCS(15)
+    5. LIS(10)
+    6. kadanes method(6)
+    7. Matrix chain multiplication(7)
+    8. DP in tree(4)
+    9. DP in grid (14)
+    10. other(5)
+
+//Type:
+     1. memoization - TopDown
+     2. Tabulation - BottomsUp
+
+//Identification: 
+          1. Choice - We take it or not
+          2. Optimal - max/min/longest / largest 
+
+
+
+//* 0-1 Knapsack:- 
+             1.subset sum
+             2. Equal sum partition
+             3. count of subset sum
+             4. minimum subset sum dif
+             5. target sum
+             6. number of subset in given difference
+
+             
