@@ -13,3 +13,6 @@
      }
      else if(wt[n-1]>w){return knapsack(wt,val,w,n-1); }
  }
+
+ // memoization:
+   
