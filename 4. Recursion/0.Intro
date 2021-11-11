@@ -1,0 +1,23 @@
+4 approaches:
+
+  1.Tree - I/P or O/p (if you understand decision)
+ 
+  2. Induction-basecase-hypothesis(we understand need to input smaller)
+
+  3. choice diagram (it is from DP)
+
+  4.
+
+// for simple question- IBH or method 2, for med question - make tree or method 1,
+for hard question - make choice diagram or method 3
+
+
+
+// now example for 2
+   > print 1 to n
+
+   *first check for a smallest valid input and check for your own output
+   
+   * design hypothesis (in stack design and try to code it)
+
+   *
