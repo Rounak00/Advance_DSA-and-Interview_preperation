@@ -66,3 +66,30 @@ int main() {
 
 // Tc= O(2^(n^2))
 // SC= O(n^2)
+
+//Another Solution
+bool issafe(int r, int c, mat){
+   return mat[r][c]==0? false:true;
+}
+
+
+silve(r,c,vector<string>p,string c,mat){
+    if(r==n-1&&c==n-1){p.puch_back(c); return;}
+
+    int rowchange[]={-1,1,0,0};
+    int columnchange[]={0,0,-1,1};
+    char d[]={'U','D','L','R'};
+
+    for(int i=0;i<4;i++){
+       if( issafe(r+rowchange[i],c+colchange[i],mat) ){
+
+        m[r][c]=0;
+        c.push_back(d[i]);
+
+        silve(r+rowchange,c+columnchange,p,c,mat);
+
+        m[r][c]=1;
+        c.pop_back();
+       } 
+    }
+} 
