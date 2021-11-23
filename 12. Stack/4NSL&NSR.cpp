@@ -1,6 +1,6 @@
 //NSR:
 
-func(a[]){
+NSR(a[]){
     vector<int>v;
     stack<int>s;
     for(int i=a.size()-1;i>=0;i--){
@@ -25,7 +25,7 @@ func(a[]){
 
 //NSL:
 
-func(a[]){
+NSL(a[]){
     vector<int>v;
     stack<int>s;
     for(int i=0;i<=a.size()-1;i++){
