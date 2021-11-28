@@ -8,7 +8,7 @@ private:
         vis[node] = 1; 
         dfsVis[node] = 1; 
         for(auto it : adj[node]) {
-            if(!vis[it]) {
+            if(vis[it]==0) {
                 if(checkCycle(it, adj, vis, dfsVis)) return true;
             } else if(dfsVis[it]) {
                 return true; 
