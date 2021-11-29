@@ -70,3 +70,66 @@ int main(){
 	}
 	return 0;
 }  // } Driver Code Ends
+
+
+////In youtube channel explanation
+
+void findtopo(int i, int vis[], stack<int>&st, vector<int>&adj[]){
+	vis[i]=1;
+	for(auto it:adj[i]){
+		if(vis[it.first]==0){
+			findtopo(it.first,vis,st,adj);
+		}
+	}
+	st.push(i);
+}
+
+
+shortestpath(int s,int n,vector<pair<int,int>>adj[]){
+ int in=INT_MAX;
+  int vis[n]={0};
+   stack<int>st;
+   for(int i=0;i<n;i++){
+	   if(!vis[i]){
+		   findtopo(i,vis,st,adj);
+	   }
+   }
+
+   int dist[n];
+   for(int i=0;i<n;i++){
+	   dist[i]=in;
+   }
+   dist[s]=0;//s is source;
+
+   while(!st.empty()){
+	   int node=st.top(); st.pop();
+
+	   if(dist[node]==in){
+		   for(auto it:adj[node]){
+			   if(dist[node]+it.second<dist[it.first]){
+				   dist[it.first]=dist[node]+it.second;
+			   }
+		   }
+	   }
+   }
+   //print distance
+
+}
+
+
+int main(){
+	int tc;
+	cin >> tc;
+	while(tc--){
+		int n,m;
+		cin>>n>>m;
+		vector<pair<int,int>>adj[n];
+		for(int i=0;i<m;i++){
+			int u,v,w;
+			cin>>u>>v>>w;
+			adj[u].push_back({v,w});
+			
+		}
+		shortestpath(0,n,adj);
+	}
+	return 0;
