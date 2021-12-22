@@ -49,8 +49,7 @@ int main()
 	BFS(adj,V,0); 
 
 	return 0; 
-} 
-
+}  
 
 
 // 2. B.F.S on disconnected graphs.
