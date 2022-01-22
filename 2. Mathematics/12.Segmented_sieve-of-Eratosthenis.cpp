@@ -36,7 +36,7 @@ void segmentedSieve(int l,int h) //low and high is the range
        if(sm<l){
            sm+=p;
        }
-       for(long long a=l;a<=h;a+=p){
+       for(long long a=sm;a<=h;a+=p){
            isprime[a-l]=false;
        }
    }
