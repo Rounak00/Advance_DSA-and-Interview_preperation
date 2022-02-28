@@ -16,7 +16,7 @@ Node *reverseK(Node *head,int k){
     return prev;
 }
 
-//Iterative
+//Iterativ
 Node *reverseK(Node *head,int k){
     Node *curr=head,*prevFirst=NULL;
     bool isFirstPass=true;
