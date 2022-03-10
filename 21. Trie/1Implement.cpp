@@ -1,3 +1,4 @@
+ 
 #include <bits/stdc++.h> 
 using namespace std; 
 
@@ -12,6 +13,7 @@ struct TrieNode
 	bool isEndOfWord; 
 }; 
 
+
 struct TrieNode *getNode(void) 
 { 
 	struct TrieNode *pNode = new TrieNode; 
@@ -23,6 +25,8 @@ struct TrieNode *getNode(void)
 
 	return pNode; 
 } 
+
+
 void insert(struct TrieNode *root, string key) 
 { 
 	struct TrieNode *pCrawl = root; 
@@ -40,6 +44,7 @@ void insert(struct TrieNode *root, string key)
 	pCrawl->isEndOfWord = true; 
 } 
 
+
 bool search(struct TrieNode *root, string key) 
 { 
 	struct TrieNode *pCrawl = root; 
@@ -56,4 +61,70 @@ bool search(struct TrieNode *root, string key)
 	return (pCrawl != NULL && pCrawl->isEndOfWord); 
 } 
 
-//Search and insert and delete is o(n)
+bool isEmpty(TrieNode* root) 
+{ 
+    for (int i = 0; i < ALPHABET_SIZE; i++) 
+        if (root->children[i]) 
+            return false; 
+    return true; 
+    
+} 
+
+TrieNode* remove(TrieNode* root, string key, int i) 
+{ 
+    
+    if (!root) 
+        return NULL; 
+  
+    
+    if (i == key.size()) { 
+  
+        
+        if (root->isEndOfWord) 
+            root->isEndOfWord = false; 
+  
+        
+        if (isEmpty(root)) { 
+            delete (root); 
+            root = NULL; 
+        } 
+  
+        return root;
+    } 
+  
+    
+    int index = key[i] - 'a'; 
+    root->children[index] =  
+          remove(root->children[index], key, i + 1); 
+  
+    
+    if (isEmpty(root) && root->isEndOfWord == false) { 
+        delete (root); 
+        root = NULL; 
+    } 
+  
+    return root; 
+} 
+ 
+
+ 
+int main()
+{ 
+	
+	string keys[] = {"an", "and", "ant", "bad", "bat", "zoo"};  
+	
+	int n = sizeof(keys)/sizeof(keys[0]); 
+
+	struct TrieNode *root = getNode(); 
+
+	
+	for (int i = 0; i < n; i++) 
+		insert(root, keys[i]); 
+
+	root = remove(root, "zoo", 0); 
+	
+	search(root, "zoo")? cout << "zoo --- " << "Yes\n" : 
+						cout << "zoo --- " << "No\n"; 
+	 
+	return 0; 
+} 
