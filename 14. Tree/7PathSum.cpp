@@ -1,4 +1,4 @@
-//with target
+//with target(start from node always)
 class Solution {
 public:
     bool hasPathSum(TreeNode* root, int targetSum) {
@@ -16,4 +16,34 @@ private:
     }
 };
 
-//maximum
+//maximum (it is node a to node b)
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int check(TreeNode *node, int &maxi){
+        if(!node){return 0;}
+        
+        int lh=max(0,check(node->left,maxi));
+        int rh=max(0,check(node->right,maxi));
+        
+        maxi=max(maxi,lh+rh+node->val);
+        
+        return node->val + max(lh,rh);
+    }
+    int maxPathSum(TreeNode* root) {
+        int maxi=INT_MIN;
+        check(root,maxi);
+        return maxi;
+    }
+};
