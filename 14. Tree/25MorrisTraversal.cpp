@@ -54,7 +54,7 @@ public:
 
                 if(prev->right==NULL){
                     prev->right=cur;
-                    preorder.push_back(prev->val);
+                    preorder.push_back(cur->val);
                     cur=cur->left;
                 }
                 else{
