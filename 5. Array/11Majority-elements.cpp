@@ -28,3 +28,10 @@ int findMajority(int arr[], int n)
     		res = -1;
     	return res; 
 }
+
+// Psyuedo :
+/*
+1. We assume we have our first element which is at first one time so we start a loop from second element 
+2. if that element and second element is same then count ++ and if not then count -- 
+3. if count is ==0 then count again start from one for this particular element
+*/
