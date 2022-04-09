@@ -1,13 +1,13 @@
 //recursion
 class Solution {
 public:
-    int rec(vector<int> &cost, int dest){
+    int rec(vector<int> &cost, int n){
        if(n<0){return 0;}
        else if(n==0 || n==1){
            return cost[n]
        } 
         
-       return cost[n]+ min(rec(cost,dest-1),rec(cost,dest-2));
+       return cost[n]+ min(rec(cost,n-1),rec(cost,n-2));
         
     }
     int minCostClimbingStairs(vector<int>& cost) {
