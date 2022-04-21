@@ -1,22 +1,28 @@
 //naive : TC:O(N^2)
-class Solution {
+  class Solution {
 public:
+
     int height(TreeNode *root){
         if(!root)
             return 0;
-        
         return 1 + max(height(root->left),height(root->right));
     }
-    int diameterOfBinaryTree(TreeNode* root) {
+       
+    void checks(TreeNode* root,int &maxi ) {
         if(!root)
-            return 0; 
+            return ; 
         
         int d1 =  height(root->left)+height(root->right);
-        
-        int d2 = diameterOfBinaryTree(root->left);
-        int d3 = diameterOfBinaryTree(root->right);
-        
-        return max(d1, max(d2,d3));
+        maxi=max(maxi,d1);
+        checks(root->left,maxi);
+        checks(root->right, maxi);   
+    }
+
+    int diameterOfBinaryTree(TreeNode* root) {
+     int maxi=0;
+     checks(root,maxi);  
+     return maxi;   
+       
     }
 };
 //Optimize: TC: O(N)
