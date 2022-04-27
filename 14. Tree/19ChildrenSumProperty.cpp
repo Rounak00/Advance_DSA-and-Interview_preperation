@@ -1,21 +1,27 @@
-void sol(Node* root){
-    if(!root){return ;}
-    int ch=0;
-    if(root->right){ch+=root->right->val;}
-    if(root->left){ch+=root->left->val;}
-
-    if(ch>=root->data){root->val=ch;}
-    else{
-        if(root->right){root->right->val=root->val;}
-        if(root->left){root->left->val=root->left;}
+void reorder(BinaryTreeNode < int > * root) {
+    if(root == NULL) return; 
+    int child = 0;
+    if(root->left) {
+        child += root->left->data; 
     }
-
-    sol(root->left);
-    sol(root->right);
-
-    int tat=0;
-    if(root->right){tat+=root->right->val;}
-    if(root->left){tat+=root->left->val;}
-
-    if(root->right || root->left){root->data=tat;}
+    if(root->right) {
+        child += root->right->data; 
+    }
+    
+    if(child >= root->data) root->data = child; 
+    else {
+        if(root->left) root->left->data = root->data; 
+        else if(root->right) root->right->data = root->data; 
+    }
+    
+    reorder(root->left); 
+    reorder(root->right); 
+    
+    int tot = 0; 
+    if(root->left) tot += root->left->data; 
+    if(root->right) tot+= root->right->data; 
+    if(root->left or root->right) root->data = tot;  
 }
+void changeTree(BinaryTreeNode < int > * root) {
+    reorder(root); 
+}  

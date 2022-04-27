@@ -2,8 +2,8 @@
 class Solution {
 public:
     vector<vector<int>> verticalTraversal(TreeNode* root) {
-        queue<pair<TreeNode* , pair<int ,int>>> Q;
-        map<int, map<int,multiset<int>>>todo;
+        queue<pair<TreeNode* , pair<int ,int>>> Q;v//address, vertics, level
+        map<int, map<int,multiset<int>>>todo;//vertics, level, address
         Q.push({root,{0,0}});
         while(!Q.empty()){
             auto pres= Q.front(); //pres for present node
