@@ -39,17 +39,7 @@ public:
 //tabulation
 class Solution {
 public:
-    int solve(int ind, int s, vector<int>&a,vector<vector<int>>&dp){
-        if(s==0){return 1;}
-        if(ind==0){return (a[ind]==s);}
-        if(dp[ind][s]!=-1)return dp[ind][s];
-        int pick=0;
-        int notpick=solve(ind-1,s,a,dp);
-        if(a[ind]<=s){pick=solve(ind-1,s-a[ind],a,dp);}
-        
-        return dp[ind][s]=pick+notpick;
-    }
-    
+   
     int findTargetSumWays(vector<int>& a, int target) {
         int n=a.size();
         vector<vector<int>>dp(n,vector<int>(target+1,0));

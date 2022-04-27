@@ -1,7 +1,7 @@
 
 int findans( map<Tree<int>*,Tree<int>*>p,Tree<int>* tar){
    map<Tree<int>*,bool>vis;
-   int ans=0;
+   int maxi=0;
    queue<Tree<int>*>q;
    q.push(tar);
    vis[tar]=true;
@@ -27,7 +27,7 @@ int findans( map<Tree<int>*,Tree<int>*>p,Tree<int>* tar){
          }
        }   
        if(fl=1){
-           max++;
+           maxi++;
        }
     }
     return maxi;
