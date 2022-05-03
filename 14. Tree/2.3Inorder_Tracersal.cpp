@@ -25,7 +25,7 @@ public:
         TreeNode *node=root;
         while(true){
             if(node){
-                s.push(node);
+                s.push(node); 
                 node=node->left;
             }
             else{
