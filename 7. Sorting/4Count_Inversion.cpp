@@ -1,4 +1,4 @@
-//Naive : Teo pointer approach
+//Naive : Two loop approach
 //Efficient:
 #include <iostream>
 using namespace std;

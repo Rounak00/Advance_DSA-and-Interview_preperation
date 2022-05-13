@@ -1,44 +1,27 @@
-//Efficient: O(NlogN)
-#include<iostream> 
-#include<algorithm>
-using namespace std; 
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+       int n = intervals.size(); 
+        vector<vector<int>> mergedInterval;
+        if(n == 0 || (n == 1 && intervals[0].size() == 0)) return mergedInterval;
+        
+        sort(intervals.begin(), intervals.end());
+        
+        mergedInterval.push_back(intervals[0]); //0th index pushed in case n=1  
+        int index = 0;
+        for(int i=1; i < n; i++) 
+        {
+            //overlap - begin is same. end updated
+            if(intervals[i][0] <= mergedInterval[index][1]) 
+                mergedInterval[index][1] = max(mergedInterval[index][1],intervals[i][1]);
+            else 
+            {
+                mergedInterval.push_back(intervals[i]);
+                index++;
+            }
+        }
 
-struct Interval 
-{ 
-    int s, e; 
-}; 
-
-bool mycomp(Interval a, Interval b)  
-{ return a.s < b.s; }
-
-void mergeIntervals(Interval arr[], int n)  
-{  
-    sort(arr, arr+n, mycomp);  
-  
-    int res = 0;  
-   
-    for (int i=1; i<n; i++)  
-    {  
-        if (arr[res].e >=  arr[i].s)  
-        {   
-            arr[res].e = max(arr[res].e, arr[i].e);  
-            arr[res].s = min(arr[res].s, arr[i].s);  
-        }  
-        else { 
-            res++; 
-            arr[res] = arr[i];  
-        }     
-    }  
+        return mergedInterval;
+    }
     
-    for (int i = 0; i <= res; i++)  
-        cout << "[" << arr[i].s << ", " << arr[i].e << "] ";  
-} 
-  
-int main() 
-{ 
-    Interval arr[] =  { {5,10}, {3,15}, {18,30}, {2,7} }; 
-    int n = sizeof(arr)/sizeof(arr[0]); 
-    mergeIntervals(arr, n); 
-    
-    return 0; 
-} 
+};
