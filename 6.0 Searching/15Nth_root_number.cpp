@@ -11,7 +11,7 @@ double multiply(double number, int n) {
 void getNthRoot(int n, int m) {
     double low = 1;
     double high = m;
-    double eps = 1e-6; //decimal places you want
+    double eps = 1e-6; //decimal places you want (10^-6 = 0.000001) also need to use setprecision(10) for display how many decimal value you want in this 10 we see9 values; eps for loop and setprecision for code
     
     while((high - low) > eps) {
         double mid = (low + high) / 2.0; 
