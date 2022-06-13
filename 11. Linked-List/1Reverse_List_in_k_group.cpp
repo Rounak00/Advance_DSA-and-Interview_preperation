@@ -1,41 +1,75 @@
 //Recursive
-Node *reverseK(Node *head,int k){
-    Node *curr=head,*next=NULL,*prev=NULL;
-    int count=0;
-    while(curr!=NULL&&count<k){
-        next=curr->next;
-        curr->next=prev;
-        prev=curr;
-        curr=next;
-        count++;
+class Solution {
+public:
+    void reverse(ListNode* s, ListNode* e){
+        ListNode*p=NULL,*c=s;
+        while(p!=e){
+          ListNode* n=c->next;
+          c->next=p;  
+          p=c;
+          c=n;
+            if(n!=NULL)n=n->next;
+        }
+        
     }
-    if(next!=NULL){
-        Node *rest_head=reverseK(next,k);
-        head->next=rest_head;
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        if(head==NULL||head->next==NULL||k==1){
+            return head;
+        }
+        ListNode *e=head,*s=head; 
+        int inc=k-1;
+        while(inc--){
+            e=e->next;
+            if(e==NULL){return head;}
+        }
+        ListNode *nexhead=reverseKGroup(e->next,k);
+        reverse(s,e);
+        s->next=nexhead;
+        return e;
     }
-    return prev;
-}
+};
 
 //Iterativ
-Node *reverseK(Node *head,int k){
-    Node *curr=head,*prevFirst=NULL;
-    bool isFirstPass=true;
-    while(curr!=NULL){
-        Node *first=curr,*prev=NULL;
-        int count=0;
-        while(curr!=NULL&&count<k){
-        Node *next=curr->next;
-        curr->next=prev;
-        prev=curr;
-        curr=next;
-        count++;
+class Solution {
+public:
+    void reverse(ListNode* s, ListNode* e){
+        ListNode*p=NULL,*c=s;
+        while(p!=e){
+          ListNode* n=c->next;
+          c->next=p;  
+          p=c;
+          c=n;
+            if(n!=NULL)n=n->next;
         }
-        if(isFirstPass){head=prev;isFirstPass=false;}
-        else{prevFirst->next=prev;}
-        prevFirst=first;
+        
     }
-    return head;
-}
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        if(head==NULL||head->next==NULL||k==1){
+            return head;
+        }
+        ListNode *dummy=new ListNode(-1);
+        dummy->next=head;
+        ListNode *befs=dummy; 
+        ListNode *e=head; 
+        int inc=0;
+        while(e!=NULL){
+            inc++;
+            if(inc%k==0){
+                ListNode *s=befs->next;
+                ListNode *temp=e->next;
+                reverse(s,e);
+                befs->next=e;
+                s->next=temp;
+                
+                befs=s;
+                e=temp;
+            }else{
+                e=e->next;
+            }
+        }
+        return dummy->next;
+    }
+};  
 
 //Striver
 class Solution {
