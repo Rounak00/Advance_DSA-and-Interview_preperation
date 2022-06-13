@@ -22,6 +22,7 @@ void sorty(stack<int>a){
    }
    int temp=a.top();
    a.pop();
+   sorty(temp);
    pos(a,temp);
     
 }

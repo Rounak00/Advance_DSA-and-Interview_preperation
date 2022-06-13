@@ -54,20 +54,24 @@ int maxProfit(vector<int>& a) {
     }
 
 //striver space optimization:
-class Solution {
-public:
-    int maxProfit(vector<int>& a) {
-        int aheadbuy, aheadnotbuy, currentbuy, currentnotbuy;
-        aheadbuy=aheadnotbuy=0;
-        for(int i=a.size()-1;i>=0;i--){
-            currentnotbuy=max(a[i]+aheadbuy, 0+aheadnotbuy);
-            currentbuy=max(-a[i]+aheadnotbuy,0+aheadbuy);
-            aheadbuy=currentbuy;
-            aheadnotbuy=currentnotbuy;
+int maxProfit(vector<int>& a) {
+        int n=a.size();
+        vector<int>ahead(2,0),cur(2,0);
+         ahead[0]=ahead[1]=0;
+        for(int ind=n-1;ind>=0;ind--){
+            for(int buy=0;buy<=1;buy++){
+                int profit=0;
+            if(buy){
+            profit=max(-a[ind]+ahead[0],0+ahead[1]);
+            }else{
+            profit=max(a[ind]+ahead[1],0+ahead[0]);
+            }
+            cur[buy]=profit;
+            }
+            ahead=cur;
         }
-        return aheadbuy;
-    }};
-
+        return ahead[1];
+    }
     
 //SpaceOptimized:
 class Solution {
