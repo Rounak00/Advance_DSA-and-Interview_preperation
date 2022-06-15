@@ -28,7 +28,7 @@ public:
         if(buy){
             profit=max(-a[ind]+solve(dp,a,ind+1, 0, cap), 0+solve(dp,a,ind+1,1,cap));
         }else{
-            profit=max(a[ind]+solve(dp,a,ind+1,1,cap-1),0+solve(dp,a,ind+1,0,cap-1));
+            profit=max(a[ind]+solve(dp,a,ind+1,1,cap-1),0+solve(dp,a,ind+1,0,cap));
         }
         return dp[ind][buy][cap]= profit;
     }
