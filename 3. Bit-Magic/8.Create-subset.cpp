@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
+//2^n subsequences
 int main(){
     string x="ABC";
     int n=x.length();

@@ -21,7 +21,7 @@ bool check(dist,arr,cow){
 int aggrcow(vector<int>arr, int cow){
     sort(arr.begin(),arr.end());
     int n=arr.size();
-    int lo=arr[0]; int hi=arr[n-1]-arr[0];
+    int lo=1; int hi=arr[n-1]-arr[0];
     int res=-1;
     while(lo<=hi){
         int mid=(lo+hi)/2;
