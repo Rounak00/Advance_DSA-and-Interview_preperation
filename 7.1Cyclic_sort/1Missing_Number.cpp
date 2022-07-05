@@ -50,20 +50,21 @@ All the numbers of nums are unique.
 //cyclic sort:
 class Solution {
 public:
-    int missingNumber(vector<int>& arr) {
-       int n=arr.size();
-       int i=0;
-       while(i<n){
-       int correct=arr[i];
-       if(arr[i]<n && arr[i]!=arr[correct])
-          swap(arr[i],arr[correct]);
-       else 
-          i++;
-       }
-       for(int i=0;i<n;i++){
-        if(i!=arr[i])
-           return i;
-       }
-       return n;
+    int missingNumber(vector<int>& nums) {
+        int i=0;
+        int n=nums.size();
+        while(i<n){
+            int correct=nums[i];
+            if(nums[i]<n && nums[i]!=nums[correct]){
+                swap(nums[correct],nums[i]);
+            }else{
+                i++;
+            }
+        }
+        
+        for(int j=0;j<n;j++){
+            if(nums[j]!=j)return j;
+        }
+        return n;
     }
 };
