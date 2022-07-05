@@ -19,17 +19,22 @@ Output: [1,2]
 */
 class Solution {
 public:
-    vector<int> findErrorNums(vector<int>& nums) {
-        
-   
-           for(int i = 0; i<nums.size(); i++){
-            while(nums[i] != nums[nums[i] - 1])swap(nums[i], nums[nums[i] - 1]);
+    vector<int> findErrorNums(vector<int>& arr) {
+        int i=0;
+    while(i<arr.size()){
+        int c=arr[i]-1;
+        if(arr[i]==arr[c]){
+            i++;
         }
-        for(int i = 0; i<nums.size() ; i++){
-            if(nums[i] != i + 1) {return {nums[i], i + 1};}
+        else{
+            swap(arr[i],arr[c]);
         }
-       
-        return{-1,-1};
-        
     }
+        for(int j=0;j<arr.size();j++){
+            if(arr[j]-1!=j){
+                return {arr[j],j+1};
+            }
+        }
+        return {-1,-1};
+    } 
 };
