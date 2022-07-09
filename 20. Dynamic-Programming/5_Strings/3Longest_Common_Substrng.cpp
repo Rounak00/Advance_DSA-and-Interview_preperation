@@ -1,3 +1,16 @@
+//Recursion
+int LCS(string str1, string str2, int n, int m, int count)
+{
+    if (n==0 || m==0)
+        return count;
+    if (str1[n-1] == str2[m-1])
+        return LCS(str1, str2, n-1, m-1, count+1);
+    return max(count, max(LCS(str1, str2, n-1, m, 0), LCS(str1, str2, n, m-1, 0)));
+}
+
+//memoization
+
+
 void lcs(string s1, string s2) {
 
   int n = s1.size();
