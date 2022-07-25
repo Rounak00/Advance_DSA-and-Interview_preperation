@@ -39,7 +39,7 @@ public:
 
 
 //Tabulaton
-class Solution {
+class Solution {  //left shift of p only
 public:
    
     int lengthOfLIS(vector<int>& a) {
@@ -50,7 +50,7 @@ public:
                 
                     int res=0+dp[ind+1][p+1];
                     if(p==-1 || a[ind]>a[p]){
-                        res=max(res,1+dp[ind+1][p]);
+                        res=max(res,1+dp[ind+1][ind+1]);
                         }
                 dp[ind][p+1]=res;
             }
