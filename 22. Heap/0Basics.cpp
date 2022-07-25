@@ -14,7 +14,7 @@ void insert(int val){
        i=parent(i);
    }
 }
-//deacrease key
+//deacrease key (it call as update valu of the node)
 int decrease(int i,int x){
     a[i]=x;
     while(i!=0 && a[parent(i)]>a[i]){
@@ -23,7 +23,7 @@ int decrease(int i,int x){
     }
 }
 
-//heapify
+//heapify   TC:   O(H) / o(log n))
 void heapify(int i){
     int lt=left(i);
     int rt=right(i);
@@ -35,7 +35,7 @@ void heapify(int i){
         heapify(sm);
     }
 }
-//Extract
+//Extract // work as a pop function so remove min or max element from the heap  
 int extract(){
     if(size==0){return INT_MAX;}
     if(size==1){size--; return a[0];}
@@ -48,9 +48,9 @@ int extract(){
 decrease(i,INT_MIN);
 extract();
 
-//Build Heap
+//Build Heap   O(n * log n) / O(n * h)
 //we need to access last nodes parent that mean last node= (size-1) now its parent is ((size-1)-1)/2;
 
-for(int i=((size-2)/2);i>=0; i--){
+for(int i=((size-2)/2);i>=0; i--){ 
    heapify(i);
 }
