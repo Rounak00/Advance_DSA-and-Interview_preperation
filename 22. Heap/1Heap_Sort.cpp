@@ -1,5 +1,8 @@
-/**/
-heapsort(int arr[]){
+/*
+1. make max heap first
+2. we just put max element in last and then for last again call heapyfi
+*/
+heapsort(int arr[]){ 
     for(int i=arr.size()-1;i>=1;i--){
         swap(arr[i],arr[0]);
         heapify(arr,0,i);//here i send for size
@@ -8,7 +11,7 @@ heapsort(int arr[]){
 
 
 /*
-GFG code
+GFG code  TC: O(n log n)
 
 
 void heapify(int arr[], int n, int i)
