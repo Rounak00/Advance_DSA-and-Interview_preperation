@@ -10,7 +10,7 @@ int LCS(string str1, string str2, int n, int m, int count)
 
 //memoization
 
-
+//tabulation
 void lcs(string s1, string s2) {
 
   int n = s1.size();

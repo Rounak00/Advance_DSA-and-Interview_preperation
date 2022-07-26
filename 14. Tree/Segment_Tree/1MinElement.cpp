@@ -32,17 +32,24 @@ void updatenode(int tree[], int id, int s, int e, int i, int val){
     tree[id]= min(tree[id*2],tree[id*2+1]);
     return;
 }
-void updaterange(int tree[], int id, int s, int e, int rs, int re, int inc){
-  if(s>e||rs>e|| re<s ){return;}
-  if(s==e){
-      tree[id]+=inc;
-      return;
-  }  
-   int mid=(s+e)/2;
-   updaterange(tree,2*id,s,mid,rs,re,inc);
-   updaterange(tree,2*id+1,mid+1,e,rs,re,inc);
-   tree[id]=min(tree[2*id],tree[2*id+1]); 
-    
+void updaterange(int *tree,int index,int s,int e,int rs,int re,int inc){
+		//Out of Bounds
+		if(re<s || rs>e){
+			return;
+		}
+		//Leaf nodes
+		if(s==e){
+			tree[index] += inc;
+			return;
+		}
+
+		//Rec Case
+		int mid = (s+e)/2;
+		updaterange(tree,2*index,s,mid,rs,re,inc);
+		updaterange(tree,2*index+1,mid+1,e,rs,re,inc);
+		tree[index] = min(tree[2*index],tree[2*index+1]);
+		return;
+
 }
 int query(int tree[],int id,int s,int e,int qs,int qe){
     //no overlap
