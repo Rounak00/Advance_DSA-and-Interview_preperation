@@ -46,7 +46,7 @@ void lcs(string s1, string s2) {
       index--;
       i--;
       j--;
-    } else if (s1[i - 1] > s2[j - 1]) {
+    } else if (dp[i - 1][j] > dp[i][j - 1]) {
       i--;
     } else j--;
   }
