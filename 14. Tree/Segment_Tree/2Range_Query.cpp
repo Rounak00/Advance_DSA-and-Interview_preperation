@@ -1,11 +1,12 @@
 class SegmentTree{ // base class
-    int arrSize;
+    
     vector<int> treeArray;
     public:
-    SegmentTree(int n):arrSize(n){
-        treeArray.resize(4*arrSize, 0);
+    void set(int n){
+        treeArray.resize(4*n, 0);
     }
     void buildTree(int tIndex, int low, int high, vector<int>&nums){
+        if(low>high){return;}
         if(low==high){
             treeArray[tIndex] = nums[low];
             return;
@@ -52,19 +53,21 @@ class SegmentTree{ // base class
     }
 };
 
-class NumArray : SegmentTree {// derive class
+class NumArray {
+    SegmentTree obj;
     int n;
 public:
-    NumArray(vector<int>& nums): SegmentTree(nums.size()) {
+    NumArray(vector<int>& nums) {
         n = nums.size();
-        SegmentTree::buildTree(0, 0, n-1, nums);
+        obj.set(n);
+        obj.buildTree(0, 0, n-1, nums);
     }
     
     void update(int index, int val) {
-        SegmentTree::updateTree(0, 0, n-1, index, val);
+        obj.updateTree(0, 0, n-1, index, val);
     }
     
     int sumRange(int left, int right) {
-        return SegmentTree::rangeQuery(0, 0, n-1, left, right);
+        return obj.rangeQuery(0, 0, n-1, left, right);
     }
 };
