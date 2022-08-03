@@ -33,3 +33,21 @@ int mcm(inr n,vector<int>a){
   vector<vector<int>>dp(n,vector<int>(n,-1));
   solve(a,n,1,n-1,dp);
 }
+
+
+//Tabulations
+int solve(vector<int>a, int n){
+ vector<vector<int>>dp(n,vector<int>(n,0));
+ for(int i=n-1;i>=n-1,i--){
+   for(int j=i+1;j<n;j++){
+     int mini=INT_MAX;
+     for(int k=i;k<j;k++){
+    step=(a[i-1]*a[k]*a[j])+dp[i][k]+dp[k+1][j];
+    mini=min(mini,step);
+     }
+     dp[i][j]=mini;
+   }
+ }
+return dp[1][n-1];
+}
+
