@@ -39,44 +39,76 @@ int evaluateExp(string & exp) {
 //Memoization
 
 
- #include<bits/stdc++.h>
-
-long long mod=1000000007;
-long long solve(int i, int j,int isTrue,string &a, vector<vector<vector<long long>>>&dp){
-    if(i>j){return 0;}
-    if(i==j){
-        if(isTrue){return a[i]=='T';}
-        else{return a[i]=='F';}
+ int func(int i, int j, int isTrue, string& s, vector<vector<vector<long long>>>& dp)
+{
+    if(i > j)
+    {
+        return 0;
     }
-    if(dp[i][j][isTrue]!=-1){return dp[i][j][isTrue];}
-   long long ways=0;
-    for(int ind=i+1;ind<=j-1;ind+2){
-       long long lt= solve(i,ind-1,1,a,dp);
-        long long rt= solve(ind+1,j,1,a,dp);
-        long long lf= solve(i,ind-1,0,a,dp);
-        long long rf= solve(ind+1,j,0,a,dp);
+    if(i == j)
+    {
+        if(isTrue)
+        {
+            return s[i] == 'T';
+        }
+        else
+            return s[i] == 'F';
+    }
+    if(dp[i][j][isTrue] != -1)
+    {
+        return dp[i][j][isTrue];
+    }
+    long long ways = 0;
+    for(int ind = i + 1; ind <= j - 1; ind += 2)
+    {
+        long long LT = func(i, ind - 1, 1, s, dp);
+        long long LF = func(i, ind - 1, 0, s, dp);
+        long long RT = func(ind + 1, j, 1, s, dp);
+        long long RF = func(ind + 1, j, 0, s, dp);
         
-        if(a[ind]=='&'){
-            if(isTrue){ways= (ways+(lt*rt)%mod)%mod;}
-            else{ways=(ways+ (lt*rf)%mod + (lf*rt)%mod + (lf*rf)%mod)%mod;}
+        if(s[ind] == '&')
+        {
+            if(isTrue)
+            {
+                ways = (ways + (LT * RT) % mod) % mod;
+            }
+            else
+            {          //either left or right false or both false
+                ways = (ways + (LT * RF) % mod + (RT * LF) % mod + (LF * RF) % mod) % mod; 
+            }
         }
-        else if(a[ind]=='|'){
-            if(isTrue){ways = (ways+ (lt*rf)%mod + (lf*rt)%mod +                             (lt*rt)%mod)%mod;}
-            else{ways=(ways+ (lf*rf)%mod)%mod;}
+        if(s[ind] == '|')
+        {
+            if(isTrue)
+            {
+                ways = (ways + (LT * RT) % mod + (LT * RF) % mod + (LF * RT) % mod) % mod;
+            }
+            else
+            {
+                ways = (ways + (LF * RF) % mod) % mod;
+            }
         }
-        else{
-            if(isTrue){ways=(ways+ (lf*rt)%mod + (lt*rf)%mod)%mod;}
-            else{ways=(ways + (lt*rt)%mod + (lf*rf)%mod )%mod;}
+        else
+        {
+            if(isTrue)
+            {
+                ways = (ways + (LT * RF) % mod + (LF * RT) % mod) % mod;
+            }
+            else
+            {
+                ways = (ways + (LT * RT) % mod + (LF * RF) % mod) % mod;
+            }
         }
-        return dp[i][j][isTrue]=ways;
-}
-int evaluateExp(string & exp) {
-    // Write your code here.
-    int n=exp.size();
-    vector<vector<vector<long long>>>dp(n,vector<vector<long long>>(n,vector<long long>(2,-1)));
-    return solve(0,n-1,1,exp,dp)
+    }
+    return dp[i][j][isTrue] = ways;
 }
 
+int evaluateExp(string & exp) 
+{
+    int n = exp.size();
+    vector<vector<vector<long long>>> dp(n, vector<vector<long long>>(n, vector<long long>(2, -1)));
+    return func(0, n - 1, 1, exp, dp);
+}
 
 
 //Tabulation
