@@ -1,0 +1,95 @@
+//Recursion
+class Solution {
+public:
+    bool isPalindrome(int i,int j,string s){
+        while(i<j){
+            if(s[i]!=s[j])return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+    int solve(int i,int n, string s){
+      if(i==n){return 0;}
+        int mini=INT_MAX;
+        
+      for(int j=i;j<n;j++) {
+          if(isPalindrome(i,j,s)){
+              int cost=1+solve(j+1,n,s);
+              mini=min(mini,cost);
+          }
+      } 
+        return mini;
+    }
+    int minCut(string s) {
+        int n=s.size();
+        return solve(0,n,s)-1;
+    }
+};
+
+//Memoization
+class Solution {
+public:
+    bool isPalindrome(int i,int j,string s){
+        while(i<j){
+            if(s[i]!=s[j])return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+    int solve(int i,int n, string s, vector<int>dp){
+      if(i==n){return 0;}
+        int mini=INT_MAX;
+        if(dp[i]!=-1)return dp[i];
+      for(int j=i;j<n;j++) {
+          if(isPalindrome(i,j,s)){
+              int cost=1+solve(j+1,n,s,dp);
+              mini=min(mini,cost);
+          }
+      } 
+        return dp[i]=mini;
+    }
+    int minCut(string s) {
+        int n=s.size();
+        vector<int>dp(n,-1);
+        return solve(0,n,s,dp)-1;
+    }
+};
+
+//Tabulation
+class Solution {
+public:
+    bool isPalindrome(int i,int j,string s){
+        while(i<j){
+            if(s[i]!=s[j])return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+   
+    int minCut(string s) {
+          int n = s.length();
+        vector<int> dp(s.length()+2, 0);
+        
+        for(int i=n-1; i>=0; i--)
+        {
+            int minCost=1e8;
+
+            for(int j=i; j<s.length(); j++)
+            {
+                int cost=1e8;
+                if(isPalindrome(i, j, s))
+                {
+                    cost = 1+dp[j+1];
+                }
+                minCost = min(minCost, cost);
+            }
+
+            dp[i] = minCost;
+        }
+        
+        return dp[0] - 1;
+    }
+};
