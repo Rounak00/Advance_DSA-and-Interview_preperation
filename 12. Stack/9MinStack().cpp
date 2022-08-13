@@ -53,60 +53,50 @@ int main()
 
 
 //Efficient:
-#include <bits/stdc++.h>
-using namespace std;
+class MinStack {
+public:
+/** initialize your data structure here. */
+stack<long> lifo;
+long minn;
 
-struct MyStack {
- 
-    stack<int> s;
-    int min;
- 
+MinStack() {
+    
+}
+
 void push(int x) {
- 
-      if(s.empty() ) {
-         min=x;
-         s.push(x);
-      }
-      else if(x<=min){
-          s.push(2*x-min);
-          min=x;
-      }else{
-      s.push(x);
-      }
-   }
- 
-int pop() {
-
-    int t=s.top();s.pop();
-    if(t<=min){
-        int res=min;
-        min=2*min-t;
-        return res;
-    }else{
-        return t;
+    long xx = (long) x;
+    if(lifo.size() == 0){
+        lifo.push(xx);
+        minn = xx;
+        return;
     }
-   }
+    if(xx <= minn){
+        lifo.push(2*xx - minn);
+        minn = xx;
+    }
+    else
+        lifo.push(xx);
+    
+}
+
+void pop() {
+    long tp = lifo.top();
+    if(tp <= minn){
+        minn = 2*minn - tp;
+    }
+    lifo.pop();
+   
+}
 
 int top() {
-    int t=s.top();
-    return ((t<=min)? min : t);
-   }
- 
-int getMin() {
-      return min;
-   }
-};
-
-int main()
-{
-    MyStack s;
-    s.push(4);
-    s.push(5);
-    s.push(8);
-    s.push(1);
-    s.pop();
- 
-    cout<<" Minimum Element from Stack: " <<s.getMin();
-  
-    return 0; 
+    long tp = lifo.top();
+    if(tp <= minn){
+        return (int)minn;
+    }
+    return (int)tp;
 }
+
+int getMin() {
+    return (int)minn;
+}
+};
