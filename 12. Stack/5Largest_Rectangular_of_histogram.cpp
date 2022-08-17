@@ -29,67 +29,116 @@
 // Space Complexity: O(1)
 
 //Better:
-#include <bits/stdc++.h>
-using namespace std;
 class Solution {
 public:
-    int largestRectangleArea(vector<int>& heights) {
-        
-        vector<int> right;
-        vector<int> left;
-        stack<pair<int,int>> l;
-        stack<pair<int,int>> r;
-        for(int i=heights.size()-1;i>=0;i--){
-            if(r.empty()){
-                right.push_back(heights.size());
-            }
-            else if(!r.empty() && r.top().first<heights[i]){
-                right.push_back(r.top().second);
-            }
-            else if(!r.empty() && r.top().first>=heights[i]){
-                while(!r.empty() && r.top().first>=heights[i]){
-                    r.pop();
-                }
-                if(r.empty()){
-                    right.push_back(heights.size());
-                }
-                else{
-                    right.push_back(r.top().second);
-                }
-            }
-            r.push({heights[i],i});
-        }
-        reverse(right.begin(),right.end());
-        
-        
-        for(int i=0;i<heights.size();i++){
-            if(l.empty()){
-                left.push_back(-1);
-            }
-            else if(!l.empty() && l.top().first<heights[i]){
-                left.push_back(l.top().second);
-            }
-            else if(!l.empty() && l.top().first>=heights[i]){
-                while(!l.empty() && l.top().first>=heights[i]){
-                    l.pop();
-                }
-                if(l.empty()){
-                    left.push_back(-1);
-                }
-                else{
-                    left.push_back(l.top().second);
-                }
-            }
-            l.push({heights[i],i});
-        }
-        int ans=INT_MIN;
-        for(int i=0;i<heights.size();i++){
-            ans=max(ans,(right[i]-left[i]-1)*(heights[i]));
-        }
-        return ans;
-    }
-};
 
+vector<int> indexsRight(vector<int>& h)
+{
+    stack<pair<int,int>> st;
+    vector<int> ans;
+     int pesudoindex = h.size();
+    int n = h.size();
+    for(int i =n-1;i>=0;i--)
+    {
+        if(st.size()==0)
+        {
+            ans.push_back(pesudoindex);
+        }
+        else if(st.size()>0&&st.top().first<h[i])
+        {
+            ans.push_back(st.top().second);
+        }
+        else if(st.size()>0&&st.top().first>=h[i])
+        {
+            while(st.size()>0&&st.top().first>=h[i])
+            {
+                st.pop();
+            }
+            if(st.size()==0)
+            {
+                ans.push_back(pesudoindex);
+            }
+            else 
+            {
+                ans.push_back(st.top().second);
+            }
+        }
+        st.push({h[i],i});
+    }
+    
+    reverse(ans.begin(),ans.end());
+    return ans;
+}
+
+
+vector<int> indexsLeft(vector<int> &h)
+{
+    stack<pair<int,int>> st;
+    vector<int> ans;
+    int pesudoindex = -1;
+    int n = h.size();
+    for(int i =0;i<n;i++)
+    {
+        if(st.size()==0)
+        {
+            ans.push_back(pesudoindex);
+        }
+        else if(st.size()>0&&st.top().first<h[i])
+        {
+            ans.push_back(st.top().second);
+        }
+        else if(st.size()>0&&st.top().first>=h[i])
+        {
+            while(st.size()>0&&st.top().first>=h[i])
+            {
+                st.pop();
+            }
+            if(st.size()==0)
+            {
+                ans.push_back(pesudoindex );
+            }
+            else 
+            {
+                ans.push_back(st.top().second);
+            }
+        }
+        st.push({h[i],i});
+    }
+        
+    return ans;
+}
+
+
+int largestRectangleArea(vector<int>& heights) {
+    
+    
+    vector<int> right =  indexsRight(heights);
+    vector<int> left   = indexsLeft(heights);
+    vector<int> width;
+    vector<int> area;
+    for(int i=0;i<right.size()&&i<left.size();i++ )
+    {
+        width.push_back((right[i]-left[i])-1);
+    }
+    
+    for(int i = 0;i<width.size();i++)
+    {
+        area.push_back(width[i]*heights[i]);
+    }
+    
+    int max = INT_MIN;
+    for(int i = 0;i<area.size();i++)
+    {
+        if(area[i]>max)
+        {
+            max = area[i];
+        }
+    }
+    
+    return max;
+    
+}
+};
 
 
 
