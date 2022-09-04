@@ -13,7 +13,7 @@ using namespace std;
                 
                 int lo = i+1, hi = (int)(num.size())-1, sum = 0 - num[i];
                 
-                while (lo < hi) {
+                while (lo < hi) {  
                     if (num[lo] + num[hi] == sum) {
                         
                         vector<int> temp; 
