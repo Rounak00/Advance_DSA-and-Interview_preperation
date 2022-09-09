@@ -59,7 +59,7 @@ public:
                    } 
                  else if(num[lo] + num[hi] > sum){
                      hi--;
-                     while(lo<hi&&num[hi]==num[hi+1])hi--;
+                     while(lo<hi&&num[hi]==num[hi+1])hi--; // here we can use do while also
                      }
                  else{ lo++;
                      while(lo<hi&&num[lo]==num[lo-1])lo++;

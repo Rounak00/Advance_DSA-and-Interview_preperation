@@ -1,59 +1,48 @@
-#include<bits/stdc++.h>
-using namespace std;
+class Solution {
+public:
+   vector<vector<int>> fourSum(vector<int>& a, int t) {
+	vector<vector<int>> res;
+	if(a.size() < 4) return res;
+	int n = a.size();
 
-int main(){
-    vector<vector<int> > res;
-        
-        if (num.empty())
-            return res;
-        int n = num.size(); 
-        sort(num.begin(),num.end());
-    
-        for (int i = 0; i < n; i++) {
-        
-            int target_3 = target - num[i];
-        
-            for (int j = i + 1; j < n; j++) {
-            
-                int target_2 = target_3 - num[j];
-            
-                int front = j + 1;
-                int back = n - 1;
-            
-                while(front < back) {
-                
-                    int two_sum = num[front] + num[back];
-                
-                    if (two_sum < target_2) front++;
-                
-                    else if (two_sum > target_2) back--;
-                
-                    else {
-                    
-                        vector<int> quadruplet(4, 0);
-                        quadruplet[0] = num[i];
-                        quadruplet[1] = num[j];
-                        quadruplet[2] = num[front];
-                        quadruplet[3] = num[back];
-                        res.push_back(quadruplet);
-                    
-                        // Processing the duplicates of number 3
-                        while (front < back && num[front] == quadruplet[2]) ++front;
-                    
-                        // Processing the duplicates of number 4
-                        while (front < back && num[back] == quadruplet[3]) --back;
-                
-                    }
+	//1. Sort
+	sort(a.begin(), a.end());
+
+	//2. Fix i and j, and search for a twoSum pair in the remaining array.
+	for(int i=0; i<n; i++){
+        long long int t3=t-a[i];
+		for(int j=i+1; j<n; j++){
+			long long int t2 = t3-a[j];
+			int low = j+1, high = n-1;
+			while(low<high){
+				int sum = a[low] + a[high];
+				if(sum == t2){
+					
+					res.push_back({a[i],a[j],a[low],a[high]});
+					while(low<high && a[low]== a[low+1]) low++;
+					while(low<high && a[high] == a[high-1]) high--;
+					low++;
+					high--;
+				}
+				else if(sum < t2){
+                  do{low++;
+                    }while(low<high && a[low]==a[low-1]);
+                } 
+				else{ 
+                 do{
+                     high--;
+                 }while(low<high && a[high]==a[high+1]);
                 }
                 
-                // Processing the duplicates of number 2
-                while(j + 1 < n && num[j + 1] == num[j]) ++j;
-            }
+			}
+			while(j+1 < n && a[j] == a[j+1]) j++;
+			//Like low++ and high--, we didn't write j++ again because j loop above increments it to next position.
+		}
+		while(i+1 < n && a[i] == a[i+1]) i++;
+		//Like low++ and high--, we didn't write i++ again because i loop above increments it to next position.
+	}
+	return res;
+
         
-            // Processing the duplicates of number 1
-            while (i + 1 < n && num[i + 1] == num[i]) ++i;
-        
-        }
-    
-        return res;
     }
+};
