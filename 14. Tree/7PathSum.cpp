@@ -16,7 +16,7 @@ private:
     }
 };
 
-//maximum (it is node a to node b)
+//maximum (it is node a to node b) and also work for lraf to leaf
 
 /**
  * Definition for a binary tree node.
@@ -47,3 +47,4 @@ public:
         return maxi;
     }
 };
+
