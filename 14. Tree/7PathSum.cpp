@@ -16,7 +16,7 @@ private:
     }
 };
 
-//maximum (it is node a to node b) and also work for lraf to leaf
+//maximum (it is node a to node b) 
 
 /**
  * Definition for a binary tree node.
@@ -47,4 +47,20 @@ public:
         return maxi;
     }
 };
+
+//leaf to leaf
+
+ int check(TreeNode *node, int &maxi){
+        if(!node){return 0;}
+        if(!node->left && !node->right)return node->val;
+
+        int lh=max(0,check(node->left,maxi));
+        int rh=max(0,check(node->right,maxi));
+        if(node->left && node->right){
+            maxi=max(maxi,lh+rh+node->val);
+            return max(rh,lh)+node->val;
+        }
+        
+        return (!node->left)? rh+node->val:lh+node->val;
+    }
 
