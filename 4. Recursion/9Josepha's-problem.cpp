@@ -4,12 +4,12 @@ using namespace std;
 
 int jos(int n, int k){
     if(n==1){
-        return 1;
+        return 0;
     }
-    return((jos(n-1,k)+k-1)%n+1); // +k bcz numbers are k times shifted
+    return((jos(n-1,k)+k)%n); // +k bcz numbers are k times shifted
 }
 int main() {
-	cout<<jos(5, 3); 
+	cout<<jos(5, 3)+1; 
 	return 0;
 }
 
