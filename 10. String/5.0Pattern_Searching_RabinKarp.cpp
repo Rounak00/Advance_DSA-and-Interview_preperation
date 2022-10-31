@@ -37,7 +37,7 @@ void patSearchinng(string &txt,string &pat){
 
 
 
-//Round_rabin algo:
+//rabin karp algo:
 
 #include <bits/stdc++.h> 
 using namespace std; 
