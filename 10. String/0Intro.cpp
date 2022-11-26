@@ -14,3 +14,5 @@ int main()
         }
     }
 } 
+
+ //For numbers we can also do a - '0'
