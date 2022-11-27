@@ -1,67 +1,27 @@
-/*
-Naive:
-#include <bits/stdc++.h>
-using namespace std;
-
-void permute(string str, int l, int r){
-    
-    if(l==r){
-        if(str.find("AB")==string::npos){
-            cout<<str<<" ";
+class Solution {
+public: 
+    void findCombination(int ind, int target, vector<int> &arr, vector<vector<int>> &ans, vector<int>&ds) {
+        if(ind == arr.size()) {
+            if(target == 0) {
+                ans.push_back(ds); 
+            }
+            return; 
         }
-        return;
-    }else{
-        for(int i=l;i<=r;i++){
-            swap(str[i],str[l]);
-            permute(str,l+1,r);
-            swap(str[i],str[l]);
-        }   
+        // pick up the element 
+        if(arr[ind] <= target) {
+            ds.push_back(arr[ind]); 
+            findCombination(ind, target - arr[ind], arr, ans, ds); 
+            ds.pop_back(); 
+        }
+        
+        findCombination(ind+1, target, arr, ans, ds); 
+        
     }
-}
-
-int main() {
-	
-	string str="ABC";
-	
-    permute(str,0,str.length()-1);      
-    return 0;  
-	
-}
-
-*/
-
-//Efficient:
-#include <bits/stdc++.h>
-using namespace std;
-
-bool isSafe(string str,int l, int i, int r){
-    if(l!=0 && str[l-1]=='A' && str[i]=='B')
-        return false;
-    if(r==(l+1) && str[i]=='A' && str[l]=='B')
-        return false;
-    return true;
-}
-
-void permute(string str, int l, int r){
-    
-    if(l==r){
-        cout<<str<<" ";
-        return;
-    }else{
-        for(int i=l;i<=r;i++){
-            if(isSafe(str,l,i,r)){
-                swap(str[i],str[l]);
-                permute(str,l+1,r);
-                swap(str[i],str[l]);}
-        }   
+public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<vector<int>> ans; 
+        vector<int> ds; 
+        findCombination(0, target, candidates, ans, ds); 
+        return ans; 
     }
-}
-
-int main() {
-	
-	string str="ABC";
-	
-    permute(str,0,str.length()-1);      
-    return 0;  
-	
-}
+};
