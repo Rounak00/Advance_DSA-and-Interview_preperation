@@ -1,30 +1,21 @@
 class Solution {
 public:
-    vector<vector<int> > combinationSum2(vector<int> &num, int target) 
-    {
-        vector<vector<int>> res;
-        sort(num.begin(),num.end());
-        vector<int> local;
-        findCombination(res, 0, target, local, num);
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        vector<vector<int>>res;
+        sort(nums.begin(),nums.end());
+        vector<int>v;
+        helper(res,nums,0,v);
         return res;
     }
-    void findCombination(vector<vector<int>>& res, const int order, const int target, vector<int>& local, const vector<int>& num)
-    {
-        if(target==0)
-        {
-            res.push_back(local);
-            return;
-        }
-        else
-        {
-            for(int i = order;i<num.size();i++) // iterative component
-            {
-                if(num[i]>target) return;
-                if(i>order&&num[i]==num[i-1]) continue; // check duplicate combination
-                local.push_back(num[i]),
-                findCombination(res,i+1,target-num[i],local,num); // recursive componenet
-                local.pop_back();
-            }
+    
+    void helper(vector<vector<int>>&res , vector<int>&nums , int start , vector<int>&v ){
+            res.push_back(v);
+        
+        for(int i=start;i<nums.size();i++){
+            if(i>start&&nums[i]==nums[i-1]) continue;
+            v.push_back(nums[i]);
+            helper(res,nums,i+1,v);
+            v.pop_back();
         }
     }
 };
