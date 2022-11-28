@@ -1,27 +1,21 @@
-class Solution {
 public: 
-    void findCombination(int ind, int target, vector<int> &arr, vector<vector<int>> &ans, vector<int>&ds) {
-        if(ind == arr.size()) {
-            if(target == 0) {
-                ans.push_back(ds); 
-            }
+    void func(int ind, int sum,vector<int> &arr, int N, vector<int> &sumSubset) {
+        if(ind == N) {
+            sumSubset.push_back(sum); 
             return; 
         }
-        // pick up the element 
-        if(arr[ind] <= target) {
-            ds.push_back(arr[ind]); 
-            findCombination(ind, target - arr[ind], arr, ans, ds); 
-            ds.pop_back(); 
-        }
         
-        findCombination(ind+1, target, arr, ans, ds); 
+        // pick the element 
+        func(ind + 1, sum + arr[ind], arr, N, sumSubset); 
         
+        // Do-not pick the element
+        func(ind + 1, sum, arr, N, sumSubset);
     }
 public:
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        vector<vector<int>> ans; 
-        vector<int> ds; 
-        findCombination(0, target, candidates, ans, ds); 
-        return ans; 
+    vector<int> subsetSums(vector<int> arr, int N)
+    {
+        vector<int> sumSubset; 
+        func(0, 0, arr, N, sumSubset);
+        sort(sumSubset.begin(), sumSubset.end());
+        return sumSubset;
     }
-};
