@@ -1,7 +1,11 @@
+//PROBLEM LINK
+https://practice.geeksforgeeks.org/problems/generate-ip-addresses/1
 
-#include<bits/stdc++.h>
-using namespace std;
+//DO NOT SUBMIT THIS CODE, THIS IS TO LOOK, IF YOU GET STUCK SOMEWHERE
 
+class Solution{
+  public:
+  
 bool valid_subpart(string s, int i, int j){
     int len = j-i+1;
     if(len >3) return false;
@@ -48,3 +52,5 @@ vector<string> genIp(string &s) {
     }
     return res;
 }
+
+};

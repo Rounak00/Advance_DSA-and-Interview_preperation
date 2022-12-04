@@ -40,8 +40,8 @@ public:
         return true;
     }
 }; 
-TC= O(N^N)
-SC= O(N*N)	
+// TC= O(N^N)
+// SC= O(1)	
 
 
 
