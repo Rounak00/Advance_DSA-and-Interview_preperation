@@ -1,6 +1,5 @@
 // adjacent matrix:
-#include <bits/stdc++.h>
-using namespace std;
+//sp:o(N*N)
 
 int main() {
 	int n, m;
@@ -20,8 +19,7 @@ int main() {
 }
 
 //adjacent array of vectors:(we can do array of list also)
-#include <bits/stdc++.h>
-using namespace std;
+//sp:o(2E) [O(E) if it is directed graph]
 
 int main() {
 	int n, m;
