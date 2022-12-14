@@ -50,5 +50,5 @@ vector < int > bfsOfGraph(int V, vector < int > adj[]) {
       return bfs;
     }
 
-    //TC(N+2E) -> for each node N we have all its neighbour (degree) so total number of degree we know 2*edge so 2E
+    //TC(N+2E) -> for each node N we have all its neighbour (degree) so total number of degree we know 2*edge so 2E and in directed it will E
     //SC(3N) -> queue + ans + vis 
