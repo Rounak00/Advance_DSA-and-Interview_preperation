@@ -23,7 +23,8 @@ public:
         return false;
     }
     
-    bool graphColoring(bool graph[101][101], int m, int n) {
+    bool graphColoring(bool graph[101][101], int m, int n) {//m is num of col and graph given as array pairs
+    
        int col[n]={0};
        return solve(0,graph,m,n,col);
     }
