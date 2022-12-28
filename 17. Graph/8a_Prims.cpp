@@ -13,19 +13,26 @@ struct myComp{
         pq.push({0, 0, -1}); // {Priority queue will be having elements in the form of {wt, currNode, parentNode};
         while(pq.empty() == false){
             auto curr = pq.top();
+            int node=curr[1];
+            int weight=curr[0];
+            int parent=curr[2];
+
             pq.pop();
-            if(visited[curr[1]] == true){
+
+            if(visited[node] == true){
                 continue;
             }
             else{
-                visited[curr[1]] = true;
-                totalSum += curr[0];
-                if(curr[2] != -1){
+                visited[node] = true;
+                totalSum += weight;
+                if(parent != -1){
                     mst.push_back({curr[2], curr[1]});
                 }
-                for(auto &e : adj[curr[1]]){
-                    if(visited[e[0]] == false){
-                        pq.push({e[1], e[0], curr[1]});
+                for(auto &e : adj[node]){
+                          int wt=e[1];
+                          int childnode=e[0]
+                    if(visited[childnode] == false){
+                        pq.push({wt, childnode, curr[1]});
                     }
                 }
             }

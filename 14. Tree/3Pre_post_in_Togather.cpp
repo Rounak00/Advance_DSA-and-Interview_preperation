@@ -15,7 +15,7 @@ Vector<int> preinpost traversal(Node* root){
        auto it=s.top();
        s.pop();
 
-       if(it.scond==1){
+       if(it.second==1){
            pre.push_back(it.first->val);
            it.second++;
            s.push(it);
