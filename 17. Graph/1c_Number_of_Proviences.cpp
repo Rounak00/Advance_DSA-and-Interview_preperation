@@ -1,28 +1,27 @@
+//withou convert into list
 class Solution {
 public:
-    int findCircleNum(vector<vector<int>>& M) {
-        if (M.empty()) return 0;
-        int n = M.size();
-        vector<bool> visited(n, false);
-        int groups = 0;
-        for (int i = 0; i < visited.size(); i++) {
-            // groups += !visited[i] ? dfs(i, M, visited), 1 : 0;
-            if(!visited[i]){
-                groups++;
-                dfs(i,M,visited);
+    
+    
+    void dfs(vector<vector<int>>& isConnected,vector<bool>& vis,int num,int n){
+        vis[num]=true;
+        for(int i=0;i<n;i++){
+            if(isConnected[num-1][i]==1&&!vis[i+1]){
+                dfs(isConnected,vis,i+1,n);
             }
         }
-        return groups;
     }
-
-private:
-    void dfs(int i, vector<vector<int>>& M, vector<bool>& visited) {
-        visited[i] = true;
-        for (int j = 0; j < visited.size(); j++) {
-            if (i != j && M[i][j] && !visited[j]) {
-                dfs(j, M, visited);
+    int findCircleNum(vector<vector<int>>& isConnected) {
+       int n=isConnected.size();
+        int count=0;
+        vector<bool>vis(n+1,false);
+        for(int i=1;i<n+1;i++){
+            if(!vis[i]){
+                dfs(isConnected,vis,i,n);
+                count++;
             }
         }
+        return count;
     }
 };
 
@@ -30,11 +29,11 @@ private:
 // convert matrix to list solution
 class Solution {
 private:
-    void dsf(int node , vector<int> adjLs[] , vector<int> &vis){
+    void dfs(int node , vector<int> adjLs[] , vector<int> &vis){
         vis[node] = 1;
         for(auto it : adjLs[node]){
             if(!vis[it]){
-                dsf(it , adjLs , vis);
+                dfs(it , adjLs , vis);
             }
         }
     }
@@ -56,7 +55,7 @@ public:
         for(int i=0;i<n;i++){
             if(!vis[i]){
                 count++;
-                dsf(i ,adjLs , vis);
+                dfs(i ,adjLs , vis);
             }
         }
         return count;
