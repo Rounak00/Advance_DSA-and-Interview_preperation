@@ -28,3 +28,31 @@ int main() {
 	for(int x:arr)
 	    cout<<x<<" ";
 }
+
+//Also can this
+void segregate0and1(int arr[], int n)
+{
+
+    int type0 = 0;
+
+    int type1 = n - 1;
+ 
+
+    while (type0 < type1) {
+
+        if (arr[type0] == 1) {
+
+            swap(arr[type0], arr[type1]);
+
+            type1--;
+
+        }
+
+        else {
+
+            type0++;
+
+        }
+
+    }
+}
