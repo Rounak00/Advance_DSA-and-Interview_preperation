@@ -1,3 +1,5 @@
+//TC: (n*32)+(n*32)[insert+Maxfind]
+
 struct Node{
   Node *link[2];
   

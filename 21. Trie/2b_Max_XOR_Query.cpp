@@ -53,17 +53,19 @@ class Solution {
 public:
     vector<int> maximizeXor(vector<int>& arr, vector<vector<int>>& queries) {
     
-    vector<int> ans(queries.size(), 0); 
-    vector<pair<int, pair<int,int>>> offlineQueries; 
     sort(arr.begin(), arr.end()); 
+    vector<pair<int, pair<int,int>>> offlineQueries; 
     int index = 0;
     for(auto &it: queries) {
         offlineQueries.push_back({it[1],{it[0], index++}}); 
     }
+
     sort(offlineQueries.begin(), offlineQueries.end()); 
     int i = 0; 
     int n = arr.size(); 
     Trie trie; 
+    
+    vector<int> ans(queries.size(), 0);
     
     for(auto &it : offlineQueries) {
         while(i < n && arr[i] <= it.first) {
