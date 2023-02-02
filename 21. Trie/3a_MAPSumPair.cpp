@@ -1,3 +1,4 @@
+//trick : need to check what extra should we need to use to upgrade value
 struct Node{
   Node *link[26]={NULL};
   
