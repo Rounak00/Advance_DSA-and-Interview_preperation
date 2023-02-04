@@ -1,3 +1,5 @@
+// Time complexity : O(m*n*4^l)
+
 struct Node{    //TrieNode
         
         int ends;
@@ -6,7 +8,7 @@ struct Node{    //TrieNode
     
      Node()    
      { 
-        ends = 0;
+        ends = 0; // end int bcz there might be same word more thatn one so dont use bool
         word = "";
     }
     };
