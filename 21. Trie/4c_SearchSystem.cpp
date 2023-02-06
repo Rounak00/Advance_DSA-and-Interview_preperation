@@ -32,11 +32,11 @@ public:
       dfs(pre,node,res);
       return res;
     }
-    void dfs(string pre,Node *node,vector<string>res){
+    void dfs(string pre,Node *node,vector<string>&res){
         if(res.size()==3){return;}
         if(node->end==1){res.push_back(pre);}
         for(int i=0;i<26;i++){
-            if(node->link[26]){
+            if(node->link[i]){
                 dfs(node->link[i],pre+(char)(i+'a'),res);
             }
         }
