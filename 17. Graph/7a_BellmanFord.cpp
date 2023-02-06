@@ -17,7 +17,7 @@ main(int s,vector<vector<int>edges,int n){
         int v=it[1];
         int w=it[2];
 
-        if (dist[u] != 1e8 && dist[u] + wt < dist[v]) {
+        if (dist[u] != 1e9 && dist[u] + wt < dist[v]) {
 				return "there is a cycle";
 			}
     }
