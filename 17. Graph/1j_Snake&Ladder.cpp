@@ -23,7 +23,7 @@ public:
         visited[n-1][0] = true;
         
         que.push(1);
-        vector<bool> seen(n*n+1,false);
+        
         
         
         while(!que.empty()) {
