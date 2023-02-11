@@ -1,3 +1,5 @@
+//with pre and post we cant we should have a inoreder
+
 //Pre and in order is given
 class Solution {
 public:

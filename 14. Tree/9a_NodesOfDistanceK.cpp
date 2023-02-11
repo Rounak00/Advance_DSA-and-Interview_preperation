@@ -9,13 +9,13 @@
  */
 class Solution {
 public:
-    void markParent(TreeNode* root, unordered_map<TreeNode*,TreeNode*>&p){
+    void markParent(TreeNode* root, unordered_map<TreeNode*,TreeNode*>&map){
         queue<TreeNode*>q;
         q.push(root);
         while(!q.empty()){
             TreeNode *n=q.front(); q.pop();
-            if(n->left){p[n->left]=n; q.push(n->left);}
-            if(n->right){p[n->right]=n;q.push(n->right);}
+            if(n->left){map[n->left]=n; q.push(n->left);}
+            if(n->right){map[n->right]=n;q.push(n->right);}
         }
     }
     
@@ -28,6 +28,7 @@ public:
         unordered_map<TreeNode*,bool>vis;
         vis[target]=true;
         q.push(target);
+        
         while(!q.empty()){
             int siz=q.size();
             if(cur==k){break;}

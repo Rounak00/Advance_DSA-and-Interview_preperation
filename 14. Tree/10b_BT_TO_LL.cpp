@@ -45,7 +45,7 @@ public:
 
 // TC - O(N) 
 // SC - O(1) 
-class Solution {
+class Solution { //morris traversal
 public:
     void flatten(TreeNode* root) {
         TreeNode* cur = root;

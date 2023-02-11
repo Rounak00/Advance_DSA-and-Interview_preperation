@@ -19,10 +19,10 @@ public:
         while(!q.empty()){
             int siz=q.size();
             int f,l;
-            int mini=q.front().second;
+            int index=q.front().second;
             for(int i=0;i<siz;i++){
                 TreeNode *node=q.front().first;
-                int cur=q.front().second-mini;
+                int cur=q.front().second-index;
                 q.pop();
                 if(i==0){f=cur;}
                 if(i==siz-1){l=cur;}
