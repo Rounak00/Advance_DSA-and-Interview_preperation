@@ -18,11 +18,11 @@ void subsequence(vector<int> input, int index = 0, vector<int> output = {})
     // subsequence(input, index + 1, output); 
 
     //including
-    output.push_back(input[index]);
-    subsequence(input, index + 1, output);
+    output.push_back(input[index]); //add a
+    subsequence(input, index + 1, output); //call 
     // excluding
-    output.pop_back();
-    subsequence(input, index + 1, output);
+    output.pop_back(); //remove a, and add b
+    subsequence(input, index + 1, output); // call
 
 }              
 
