@@ -10,7 +10,7 @@ private:
         
         inorder(root->left);
         
-        if (prev != NULL && (root->val < prev->val))
+        if (root->val < prev->val)
         {
            
             // If this is first violation, mark these two nodes as
