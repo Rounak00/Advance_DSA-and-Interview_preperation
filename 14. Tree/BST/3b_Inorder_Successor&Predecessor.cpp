@@ -16,3 +16,17 @@ public:
         return successor;
     }
 };
+
+//Predescessor
+Node* inOrderPredecessor(Node* root, Node* p){
+	Node* predecessor = NULL;
+	while(root){
+		if(p->val>= root->val){
+			predecessor = root;
+			root = root->right;
+		}
+		else
+			root = root->left;
+	}
+	return predecessor;
+}

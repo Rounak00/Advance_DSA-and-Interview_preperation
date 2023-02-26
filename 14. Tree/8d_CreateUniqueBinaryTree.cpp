@@ -40,8 +40,7 @@ public:
         return buildTreePostIn(inorder, 0, inorder.size()-1, postorder, 0, 
                               postorder.size()-1,hm);
     }
-    TreeNode* buildTreePostIn(vector<int> &inorder, int is, int ie, vector<int> &postorder, int ps, int pe, 
-                                     map<int,int> &hm){
+    TreeNode* buildTreePostIn(vector<int> &inorder, int is, int ie, vector<int> &postorder, int ps, int pe,  map<int,int> &hm){
         if (ps>pe || is>ie) return NULL;
         TreeNode* root = new TreeNode(postorder[pe]);
         int ri = hm[postorder[pe]];

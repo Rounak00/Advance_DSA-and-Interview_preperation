@@ -23,3 +23,17 @@ private:
         for (; node != NULL; myStack.push(node), node = node->left);
     }
 };
+
+
+
+//Before function as H/W
+ int before(){
+    TreeNode* t=myStack.top();
+    myStack.pop();
+    pushallR(t->left);
+    return t->val; 
+ }
+
+ void pushallR(TreeNode *root){
+    for(;root!=NULL; myStack.push(root), root=root->right);
+ }
