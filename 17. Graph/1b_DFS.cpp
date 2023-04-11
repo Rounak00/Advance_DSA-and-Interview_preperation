@@ -3,7 +3,7 @@ void dfs(node,adj,vis,ans){
     ans.push_back(node);
 
     for(auto it: adj[node]){
-        if(!vis[node]){
+        if(!vis[it]){
             dfs(it,vis,adj,ans);
         }
     }
@@ -24,7 +24,7 @@ void dfs(node,adj,vis,ans){
     ans.push_back(node);
 
     for(auto it: adj[node]){
-        if(!vis[node]){
+        if(!vis[it]){
             dfs(it,vis,adj,ans);
         }
     }
