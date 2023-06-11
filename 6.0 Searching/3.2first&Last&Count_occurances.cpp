@@ -44,3 +44,12 @@ int lastOcc(int arr[], int n, int x)
 }
 
 //Count occurances = first occurance - last occurance
+
+/*
+First Occurance: 
+ if arr[LB(X)]==x and LB(x)!=N where N is size of array and X is the element
+    then the LB(X) is first occurance
+
+Last Occurance :
+  Do a first occurance with LB and if its Accept then UB(X)-1 is Lower Bound
+*/
