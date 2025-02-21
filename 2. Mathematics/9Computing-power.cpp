@@ -16,6 +16,7 @@ using namespace std;
 	else
 		return temp * x; 
 }
+
 int power2(int x, int n){
     int res=1;
     while(n>0){
