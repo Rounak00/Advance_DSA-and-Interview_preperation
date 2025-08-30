@@ -14,10 +14,12 @@ int main(){
 }
 /*
 Naive solution:-
-	while (n != 0) {
-	    if (n % 2 != 0)
-	       count++;
-	    n = n/2;      
-	} 
-	return count; 
+	int countSetBits(int n) {
+    int count = 0;
+    while (n > 0) {
+        if (n % 2 == 1) count++; // or simply: count += (n & 1);
+        n = n / 2;               // or: n >>= 1;
+    }
+    return count;
+}
 */

@@ -18,9 +18,19 @@ Brian kerningthan algorithm:-
 Find right most bit:-
       N & ~(N-1) 
 
+How XOR Works => if number of 1 odd then return 1 if even return 0;
+
+Also num>>k => num/pow(2,k);
+and num<<k  => num*pow(2,k);
+
 Unset a bit:- a & ~(1<<nth)
 
 
 In Xor all 4 multiples in ans of a series
 
 NB: In question make sure there are Nth bit and position  are different
+
+
+Strivers Bit manipulation playist -> Strivers playlist Questions on 0.* modules nad some questions are already done that are not repeat
+0.1: Number convert to Bit and Bit convert to number
+0.2: 1's compliments 2's compliments

@@ -27,3 +27,24 @@ same like that
  if (n%4==3) print(0) 
 
 */
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int xorUpto(int n) {
+    if (n % 4 == 0) return n;
+    else if (n % 4 == 1) return 1;
+    else if (n % 4 == 2) return n + 1;
+    else return 0;
+}
+
+int rangeXor(int L, int R) {
+    return xorUpto(R) ^ xorUpto(L - 1);
+}
+
+int main() {
+    int L = 3, R = 9;
+    cout << "XOR from " << L << " to " << R << " = " << rangeXor(L, R) << endl;
+    return 0;
+}

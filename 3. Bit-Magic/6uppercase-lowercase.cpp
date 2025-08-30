@@ -5,10 +5,10 @@ using namespace std;
 int main(){
     char val='A';
     char res= (val | (1<<5));
-    cout<<res;
+    cout<<res;//a
     val='a';
     res=(val & ~(1<<5)) ;
-    cout<<res;
+    cout<<res;//A
     return 0;
 }
 
